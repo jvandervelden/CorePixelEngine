@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <RootNamespace>CorePixelEngine</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CorePixelEngine.Core\CorePixelEngine.Core.csproj" />
+    <ProjectReference Include="..\OpenGL.Net\OpenGL.Net\OpenGL.Net_netstd2.0.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,3 @@
+[submodule "OpenGL.Net"]
+	path = OpenGL.Net
+	url = https://github.com/luca-piccioni/OpenGL.Net.git

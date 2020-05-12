@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorePixelEngine.DemoApp", "CorePixelEngine.DemoApp\CorePixelEngine.DemoApp.csproj", "{D9D70F90-5032-4ECB-A77D-F3E508F952E9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorePixelEngine.Core", "CorePixelEngine.Core\CorePixelEngine.Core.csproj", "{8E06258B-CED3-46F7-A175-A593829722C1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorePixelEngine.OpenGL.Net", "CorePixelEngine.OpenGL.Net\CorePixelEngine.OpenGL.Net.csproj", "{18347528-ADA6-4F28-8373-94AAD904A0F3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorePixelEngine.Windows", "CorePixelEngine.Windows\CorePixelEngine.Windows.csproj", "{61B14DF5-3E71-450D-88B7-AF9E0D683281}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenGL.Net_netstd2.0", "OpenGL.Net\OpenGL.Net\OpenGL.Net_netstd2.0.csproj", "{96AD63E6-261E-4AEF-858D-6A94883DFE28}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		OpenGL.Net\Khronos.Net\Khronos.Net.projitems*{96ad63e6-261e-4aef-858d-6a94883dfe28}*SharedItemsImports = 5
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D9D70F90-5032-4ECB-A77D-F3E508F952E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9D70F90-5032-4ECB-A77D-F3E508F952E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9D70F90-5032-4ECB-A77D-F3E508F952E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9D70F90-5032-4ECB-A77D-F3E508F952E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E06258B-CED3-46F7-A175-A593829722C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E06258B-CED3-46F7-A175-A593829722C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E06258B-CED3-46F7-A175-A593829722C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E06258B-CED3-46F7-A175-A593829722C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18347528-ADA6-4F28-8373-94AAD904A0F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18347528-ADA6-4F28-8373-94AAD904A0F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18347528-ADA6-4F28-8373-94AAD904A0F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18347528-ADA6-4F28-8373-94AAD904A0F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61B14DF5-3E71-450D-88B7-AF9E0D683281}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61B14DF5-3E71-450D-88B7-AF9E0D683281}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61B14DF5-3E71-450D-88B7-AF9E0D683281}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61B14DF5-3E71-450D-88B7-AF9E0D683281}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96AD63E6-261E-4AEF-858D-6A94883DFE28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96AD63E6-261E-4AEF-858D-6A94883DFE28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96AD63E6-261E-4AEF-858D-6A94883DFE28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96AD63E6-261E-4AEF-858D-6A94883DFE28}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4DA921AA-AC31-4235-AE61-08D26FE4DF44}
+	EndGlobalSection
+EndGlobal
