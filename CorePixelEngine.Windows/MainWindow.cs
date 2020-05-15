@@ -35,7 +35,7 @@ namespace CorePixelEngine.Windows
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new System.Drawing.Point(vWindowPos.x, vWindowPos.y);
             this.Text = "Form1";
-
+                        
             Timer timer = new Timer(this.components);
             timer.Interval = 1000;
             timer.Tick += TitleUpdateTimer;
