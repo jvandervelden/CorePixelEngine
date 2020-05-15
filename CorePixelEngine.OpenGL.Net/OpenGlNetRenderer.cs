@@ -23,37 +23,32 @@ namespace CorePixelEngine.OpenGL.Net
             if (bDepth) Gl.Clear(ClearBufferMask.DepthBufferBit);
         }
 
-        public RCode CreateDevice(IList<object> parameters, bool bFullScreen, bool bVSYNC)
+        public RCode CreateDevice(Dictionary<string, object> parameters, bool bFullScreen, bool bVSYNC)
         {
-            windowHandle = (IntPtr)parameters[0];
+            IntPtr window = IntPtr.Zero;
+            IntPtr display = IntPtr.Zero;
 
-            if (parameters.Count == 1)
+            if (parameters.ContainsKey("windowPtr"))
+                window = (IntPtr)parameters["windowPtr"];
+            if (parameters.ContainsKey("displayPtr"))
+                display = (IntPtr)parameters["displayPtr"];
+
+            deviceContext = DeviceContext.Create(display, window);
+            deviceContext.ChoosePixelFormat(new DevicePixelFormat()
             {
-                deviceContext = DeviceContext.Create(IntPtr.Zero, windowHandle);
-                deviceContext.ChoosePixelFormat(new DevicePixelFormat()
-                {
-                    DoubleBuffer = true
-                });
+                DoubleBuffer = true
+            });
 
-                renderContext = deviceContext.CreateContext(IntPtr.Zero);
+            renderContext = deviceContext.CreateContext(IntPtr.Zero);
 
-                if (renderContext == IntPtr.Zero) return RCode.FAIL;
-                if (!deviceContext.MakeCurrent(renderContext)) return RCode.FAIL;
+            if (renderContext == IntPtr.Zero) return RCode.FAIL;
+            if (!deviceContext.MakeCurrent(renderContext)) return RCode.FAIL;
 
-                deviceContext.SwapInterval(0);
-            } 
-            else if (parameters.Count > 1)
-            {
-                renderContext = (IntPtr)parameters[1];
-                //deviceContext = DeviceContext.Create(renderContext, windowHandle);
-                Gl.Initialize();
-                Gl.BindAPI(KhronosVersion.Parse("1.1"), null);
-            }
+            deviceContext.SwapInterval(0);
 
             Gl.Enable(EnableCap.Blend);
             Gl.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
             Gl.Enable(EnableCap.Texture2d);
-            //deviceContext.SwapInterval(0);
 
             return RCode.OK;
         }

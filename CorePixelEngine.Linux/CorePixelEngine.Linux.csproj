@@ -2,12 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>CorePixelEngine</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CorePixelEngine.Core\CorePixelEngine.Core.csproj" />
-    <ProjectReference Include="..\OpenGL.Net\OpenGL.Net\OpenGL.Net_netcore2.2.csproj" />
+    <ProjectReference Include="..\X11.Net\X11\X11.csproj" />
   </ItemGroup>
 
 </Project>

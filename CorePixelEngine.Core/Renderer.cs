@@ -7,7 +7,7 @@ namespace CorePixelEngine
     public interface Renderer
     {
         public void PrepareDevice();
-        public RCode CreateDevice(IList<object> parameters, bool bFullScreen, bool bVSYNC);
+        public RCode CreateDevice(Dictionary<string, object> parameters, bool bFullScreen, bool bVSYNC);
         public RCode DestroyDevice();
         public void DisplayFrame();
         public void PrepareDrawing();

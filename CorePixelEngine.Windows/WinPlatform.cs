@@ -22,8 +22,9 @@ namespace CorePixelEngine.Windows
         
         public RCode CreateGraphics(bool bFullScreen, bool bEnableVSYNC, VectorI2d vViewPos, VectorI2d vViewSize)
         {
-            List<object> renderParams = new List<object>();
-            renderParams.Add(window.ThreadSafeHandle);
+            Dictionary<string, object> renderParams = new Dictionary<string, object>();
+            
+            renderParams["windowPtr"] = window.ThreadSafeHandle;
 
             if (Renderer.GetInstance().CreateDevice(renderParams, bFullScreen, bEnableVSYNC) != RCode.OK) return RCode.FAIL;
 

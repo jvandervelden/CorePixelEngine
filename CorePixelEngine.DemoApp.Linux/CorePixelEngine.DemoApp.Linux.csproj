@@ -1,13 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>CorePixelEngine</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CorePixelEngine.Core\CorePixelEngine.Core.csproj" />
-    <ProjectReference Include="..\OpenGL.Net\OpenGL.Net\OpenGL.Net_netcore2.2.csproj" />
+    <ProjectReference Include="..\CorePixelEngine.OpenGL.Net\CorePixelEngine.OpenGL.Net.csproj" />
+    <ProjectReference Include="..\CorePixelEngine.Linux\CorePixelEngine.Linux.csproj" />
   </ItemGroup>
 
 </Project>

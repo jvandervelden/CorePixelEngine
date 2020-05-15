@@ -6,7 +6,7 @@ namespace CorePixelEngine
 {
     public class Input
     {
-        private const byte nMouseButtons = 5;
+        private const byte nMouseButtons = 7;
         // State of keyboard        
         private bool[] pKeyNewState = new bool[256];
         private bool[] pKeyOldState = new bool[256];
