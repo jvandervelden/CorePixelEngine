@@ -5,7 +5,7 @@ namespace X11
 {
     public class XlibExt
     {
-        [DllImport("libX11.so.6")]
+        [DllImport("libX11.so.6", EntryPoint = "XSetWMProtocols")]
         public static extern X11.Status XSetWMProtocols(IntPtr display, Window name, Atom[] atom, int count);
 
         [DllImport("libX11.so.6", EntryPoint = "XSetWMNormalHints")]
@@ -13,9 +13,13 @@ namespace X11
 
         [DllImport("libX11.so.6", EntryPoint = "XLookupKeysym")]
         public extern static KeySym XLookupKeysym(XKeyEvent[] keyEvent, int index);
+
+        [DllImport("libX11.so.6", EntryPoint = "XInternAtom")]
+        public static extern X11.Atom XInternAtom(IntPtr display, string name, bool only_if_exists);
     }
 
-    public enum Keys {
+    public enum Keys 
+    {
         XK_VoidSymbol = (0xffffff),  /* Void symbol */
         /*
         * TTY function keys, cleverly chosen to map to ASCII, for convenience of

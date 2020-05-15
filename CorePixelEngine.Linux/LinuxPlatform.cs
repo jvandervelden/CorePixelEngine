@@ -106,7 +106,7 @@ namespace CorePixelEngine.Linux
             XlibExt.XSetWMNormalHints(display, mainWindow, ref sizeHints);
 
             // Setup delete message when the user closes the window
-            deleteWindowMessage = Xlib.XInternAtom(display, "WM_DELETE_WINDOW", false);
+            deleteWindowMessage = XlibExt.XInternAtom(display, "WM_DELETE_WINDOW", false);
             XlibExt.XSetWMProtocols(display, mainWindow, new Atom[] { deleteWindowMessage }, 1);
 
             return RCode.OK;
