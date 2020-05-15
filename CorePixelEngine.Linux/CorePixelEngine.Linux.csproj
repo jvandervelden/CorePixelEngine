@@ -6,7 +6,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CorePixelEngine.Core\CorePixelEngine.Core.csproj" />
-    <ProjectReference Include="..\X11.Net\X11\X11.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="X11" Version="1.0.6" />
   </ItemGroup>
 
 </Project>
