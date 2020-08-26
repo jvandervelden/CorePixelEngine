@@ -9,7 +9,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: Windows
 
     steps:
     - uses: actions/checkout@v2
@@ -44,15 +44,10 @@ jobs:
     - name: Test OpenGL.Net
       run: dotnet test --no-restore --verbosity normal ./CorePixelEngine.OpenGL.Net/CorePixelEngine.OpenGL.Net.csproj
     
-    # Cache Builds
-    - name: Cache Build
-      uses: actions/cache@v2
-      with:
-        path: |
-          ./CorePixelEngine.Core/bin
-          ./CorePixelEngine.Core/obj
-          ./CorePixelEngine.Linux/bin
-          ./CorePixelEngine.Linux/obj
-          ./CorePixelEngine.OpenGL.Net/bin
-          ./CorePixelEngine.OpenGL.Net/obj
-        key: ${{ github.sha }}
+    # Build Windows
+    - name: Install dependencies Windows
+      run: dotnet restore ./CorePixelEngine.Windows/CorePixelEngine.Windows.csproj
+    - name: Build Windows
+      run: dotnet build --configuration Release --no-restore ./CorePixelEngine.Windows/CorePixelEngine.Windows.csproj
+    - name: Test Windows
+      run: dotnet test --no-restore --verbosity normal ./CorePixelEngine.Windows/CorePixelEngine.Windows.csproj
