@@ -23,13 +23,17 @@ jobs:
       run: dotnet restore
       
     # Build Core
-    - name: Build
+    - name: Install dependencies Core
+      run: dotnet restore ./CorePixelEngine.Core/CorePixelEngine.Core.csproj
+    - name: Build Core
       run: dotnet build --configuration Release --no-restore ./CorePixelEngine.Core/CorePixelEngine.Core.csproj
-    - name: Test
+    - name: Test Core
       run: dotnet test --no-restore --verbosity normal ./CorePixelEngine.Core/CorePixelEngine.Core.csproj
       
     # Build Linux
-    - name: Build
+    - name: Install dependencies Linux
+      run: dotnet restore ./CorePixelEngine.Linux/CorePixelEngine.Linux.csproj
+    - name: Build Linux
       run: dotnet build --configuration Release --no-restore ./CorePixelEngine.Linux/CorePixelEngine.Linux.csproj
-    - name: Test
+    - name: Test Linux
       run: dotnet test --no-restore --verbosity normal ./CorePixelEngine.Linux/CorePixelEngine.Linux.csproj
