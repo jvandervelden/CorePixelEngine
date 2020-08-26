@@ -1,3 +1,5 @@
+![Build Pixel Engine](https://github.com/jvandervelden/CorePixelEngine/workflows/Build%20Pixel%20Engine/badge.svg?branch=master)
+
 # Core Pixel Engine
 
 Conversion of olcPixelGameEngine: https://github.com/OneLoneCoder/olcPixelGameEngine.
