@@ -43,3 +43,16 @@ jobs:
       run: dotnet build --configuration Release --no-restore ./CorePixelEngine.OpenGL.Net/CorePixelEngine.OpenGL.Net.csproj
     - name: Test OpenGL.Net
       run: dotnet test --no-restore --verbosity normal ./CorePixelEngine.OpenGL.Net/CorePixelEngine.OpenGL.Net.csproj
+    
+    # Cache Builds
+    - name: Cache Build
+      uses: actions/cache@v2
+      with:
+        path: |
+          ./CorePixelEngine.Core/bin
+          ./CorePixelEngine.Core/obj
+          ./CorePixelEngine.Linux/bin
+          ./CorePixelEngine.Linux/obj
+          ./CorePixelEngine.OpenGL.Net/bin
+          ./CorePixelEngine.OpenGL.Net/obj
+        key: ${{ github.sha }}
