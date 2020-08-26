@@ -29,11 +29,27 @@ jobs:
       run: dotnet test --no-restore --verbosity normal
 
     # Publish
-    - name: Publish NuGet
-      # You may pin to the exact commit or the version.
-      # uses: brandedoutcast/publish-nuget@c12b8546b67672ee38ac87bea491ac94a587f7cc
+    - name: Publish Core
       uses: brandedoutcast/publish-nuget@v2.5.5
       with:
         # Filepath of the project to be packaged, relative to root of repository
         PROJECT_FILE_PATH: ./CorePixelEngine.Core/CorePixelEngine.Core.csproj
+        NUGET_KEY: ${{ secrets.NUGET_API_KEY }}
+    - name: Publish Linux
+      uses: brandedoutcast/publish-nuget@v2.5.5
+      with:
+        # Filepath of the project to be packaged, relative to root of repository
+        PROJECT_FILE_PATH: ./CorePixelEngine.Linux/CorePixelEngine.Linux.csproj
+        NUGET_KEY: ${{ secrets.NUGET_API_KEY }}
+    - name: Publish Windows
+      uses: brandedoutcast/publish-nuget@v2.5.5
+      with:
+        # Filepath of the project to be packaged, relative to root of repository
+        PROJECT_FILE_PATH: ./CorePixelEngine.Windows/CorePixelEngine.Windows.csproj
+        NUGET_KEY: ${{ secrets.NUGET_API_KEY }}
+    - name: Publish OpenGL.Net
+      uses: brandedoutcast/publish-nuget@v2.5.5
+      with:
+        # Filepath of the project to be packaged, relative to root of repository
+        PROJECT_FILE_PATH: ./CorePixelEngine.OpenGL.net/CorePixelEngine.OpenGL.net.csproj
         NUGET_KEY: ${{ secrets.NUGET_API_KEY }}
