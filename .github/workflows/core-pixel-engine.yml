@@ -35,3 +35,11 @@ jobs:
       run: dotnet build --configuration Release --no-restore ./CorePixelEngine.Linux/CorePixelEngine.Linux.csproj
     - name: Test Linux
       run: dotnet test --no-restore --verbosity normal ./CorePixelEngine.Linux/CorePixelEngine.Linux.csproj
+    
+    # Build Linux
+    - name: Install dependencies OpenGl.Net
+      run: dotnet restore ./CorePixelEngine.OpenGl.Net/CorePixelEngine.OpenGl.Net.csproj
+    - name: Build OpenGl.Net
+      run: dotnet build --configuration Release --no-restore ./CorePixelEngine.OpenGl.Net/CorePixelEngine.OpenGl.Net.csproj
+    - name: Test OpenGl.Net
+      run: dotnet test --no-restore --verbosity normal ./CorePixelEngine.OpenGl.Net/CorePixelEngine.OpenGl.Net.csproj
