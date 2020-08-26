@@ -1,4 +1,4 @@
-name: Pixel Engine Linux
+name: Build Pixel Engine
 
 on:
   push:
@@ -21,33 +21,9 @@ jobs:
         dotnet-version: 3.1.301
       
     # Build Core
-    - name: Install dependencies Core
-      run: dotnet restore ./CorePixelEngine.Core/CorePixelEngine.Core.csproj
-    - name: Build Core
-      run: dotnet build --configuration Release --no-restore ./CorePixelEngine.Core/CorePixelEngine.Core.csproj
-    - name: Test Core
-      run: dotnet test --no-restore --verbosity normal ./CorePixelEngine.Core/CorePixelEngine.Core.csproj
-      
-    # Build Linux
-    - name: Install dependencies Linux
-      run: dotnet restore ./CorePixelEngine.Linux/CorePixelEngine.Linux.csproj
-    - name: Build Linux
-      run: dotnet build --configuration Release --no-restore ./CorePixelEngine.Linux/CorePixelEngine.Linux.csproj
-    - name: Test Linux
-      run: dotnet test --no-restore --verbosity normal ./CorePixelEngine.Linux/CorePixelEngine.Linux.csproj
-    
-    # Build Linux
-    - name: Install dependencies OpenGL.Net
-      run: dotnet restore ./CorePixelEngine.OpenGL.Net/CorePixelEngine.OpenGL.Net.csproj
-    - name: Build OpenGL.Net
-      run: dotnet build --configuration Release --no-restore ./CorePixelEngine.OpenGL.Net/CorePixelEngine.OpenGL.Net.csproj
-    - name: Test OpenGL.Net
-      run: dotnet test --no-restore --verbosity normal ./CorePixelEngine.OpenGL.Net/CorePixelEngine.OpenGL.Net.csproj
-    
-    # Build Windows
-    - name: Install dependencies Windows
-      run: dotnet restore ./CorePixelEngine.Windows/CorePixelEngine.Windows.csproj
-    - name: Build Windows
-      run: dotnet build --configuration Release --no-restore ./CorePixelEngine.Windows/CorePixelEngine.Windows.csproj
-    - name: Test Windows
-      run: dotnet test --no-restore --verbosity normal ./CorePixelEngine.Windows/CorePixelEngine.Windows.csproj
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+    - name: Test
+      run: dotnet test --no-restore --verbosity normal
