@@ -3,6 +3,13 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>CorePixelEngine</RootNamespace>
+    <Authors>Jasper Vander Velden</Authors>
+    <PackageLicenseExpression>OLC-3</PackageLicenseExpression>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <SignAssembly>false</SignAssembly>
+    <RepositoryUrl>https://github.com/jvandervelden/CorePixelEngine.git</RepositoryUrl>
+    <RepositoryType>Github</RepositoryType>
+    <Version>0.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
