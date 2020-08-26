@@ -20,8 +20,8 @@ jobs:
       with:
         dotnet-version: 3.1.301
     - name: Install dependencies
-      run: dotnet restore
+      run: dotnet restore .\CorePixelEngine.Core\CorePixelEngine.Core.csproj
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build --configuration Release --no-restore .\CorePixelEngine.Core\CorePixelEngine.Core.csproj
     - name: Test
-      run: dotnet test --no-restore --verbosity normal
+      run: dotnet test --no-restore --verbosity normal .\CorePixelEngine.Core\CorePixelEngine.Core.csproj

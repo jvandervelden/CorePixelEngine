@@ -26,9 +26,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorePixelEngine.DemoApp.Lin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenGL.Net_netcore2.2", "OpenGL.Net\OpenGL.Net\OpenGL.Net_netcore2.2.csproj", "{F9E19BB6-986B-4D0B-8B9B-CE9C2AB6DF13}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{D3BAF70C-B0B4-460C-B053-546BCE3A84AE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{DC29D38E-9674-44D4-A553-973EABCE2743}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\core-pixel-engine.yml = .github\workflows\core-pixel-engine.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		..\OpenGL.Net\Khronos.Net\Khronos.Net.projitems*{f9e19bb6-986b-4d0b-8b9b-ce9c2ab6df13}*SharedItemsImports = 5
+		OpenGL.Net\Khronos.Net\Khronos.Net.projitems*{f9e19bb6-986b-4d0b-8b9b-ce9c2ab6df13}*SharedItemsImports = 5
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -96,6 +103,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D3BAF70C-B0B4-460C-B053-546BCE3A84AE} = {2D15DC25-5EAA-449E-AF02-91F0A4A311C8}
+		{DC29D38E-9674-44D4-A553-973EABCE2743} = {D3BAF70C-B0B4-460C-B053-546BCE3A84AE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4DA921AA-AC31-4235-AE61-08D26FE4DF44}
