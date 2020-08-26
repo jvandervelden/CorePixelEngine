@@ -9,6 +9,8 @@
     <RepositoryUrl>https://github.com/jvandervelden/CorePixelEngine.git</RepositoryUrl>
     <RepositoryType>Github</RepositoryType>
     <Version>0.1.0</Version>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <Description>Linux platform for the CorePixelEngine.</Description>
   </PropertyGroup>
 
   <ItemGroup>

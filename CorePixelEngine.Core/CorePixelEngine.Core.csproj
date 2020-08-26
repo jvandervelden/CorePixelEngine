@@ -10,6 +10,7 @@
     <RepositoryType>Github</RepositoryType>
     <Version>0.1.0</Version>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <Description>Core functionality for the CorePixelEngine.</Description>
   </PropertyGroup>
 
   <ItemGroup>
