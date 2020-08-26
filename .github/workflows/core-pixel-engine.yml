@@ -20,10 +20,19 @@ jobs:
       with:
         dotnet-version: 3.1.301
       
-    # Build Core
+    # Build
     - name: Install dependencies
       run: dotnet restore
     - name: Build
       run: dotnet build --configuration Release --no-restore
     - name: Test
       run: dotnet test --no-restore --verbosity normal
+
+    # Publish
+    - name: Publish NuGet
+      # You may pin to the exact commit or the version.
+      # uses: brandedoutcast/publish-nuget@c12b8546b67672ee38ac87bea491ac94a587f7cc
+      uses: brandedoutcast/publish-nuget@v2.5.5
+      with:
+        # Filepath of the project to be packaged, relative to root of repository
+        PROJECT_FILE_PATH: ./CorePixelEngine.Core/bin/Release/CorePixelEngine.Core.0.1.0.nupkg
