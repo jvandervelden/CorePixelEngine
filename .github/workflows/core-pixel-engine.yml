@@ -1,4 +1,4 @@
-name: .NET Core
+name: Pixel Engine Linux
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
 jobs:
   build:
 
-    runs-on: windows
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -21,7 +21,15 @@ jobs:
         dotnet-version: 3.1.301
     - name: Install dependencies
       run: dotnet restore
+      
+    # Build Core
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build --configuration Release --no-restore ./CorePixelEngine.Core/CorePixelEngine.Core.csproj
     - name: Test
-      run: dotnet test --no-restore --verbosity normal
+      run: dotnet test --no-restore --verbosity normal ./CorePixelEngine.Core/CorePixelEngine.Core.csproj
+      
+    # Build Linux
+    - name: Build
+      run: dotnet build --configuration Release --no-restore ./CorePixelEngine.Linux/CorePixelEngine.Linux.csproj
+    - name: Test
+      run: dotnet test --no-restore --verbosity normal ./CorePixelEngine.Linux/CorePixelEngine.Linux.csproj
