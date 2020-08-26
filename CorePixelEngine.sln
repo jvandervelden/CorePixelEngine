@@ -24,7 +24,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorePixelEngine.Linux", "Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorePixelEngine.DemoApp.Linux", "CorePixelEngine.DemoApp.Linux\CorePixelEngine.DemoApp.Linux.csproj", "{4B9DB1AF-D451-4C88-8C33-AAB4CF82EFBC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenGL.Net_netcore2.2", "..\OpenGL.Net\OpenGL.Net\OpenGL.Net_netcore2.2.csproj", "{F9E19BB6-986B-4D0B-8B9B-CE9C2AB6DF13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenGL.Net_netcore2.2", "OpenGL.Net\OpenGL.Net\OpenGL.Net_netcore2.2.csproj", "{F9E19BB6-986B-4D0B-8B9B-CE9C2AB6DF13}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
