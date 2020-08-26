@@ -3,7 +3,7 @@ using System.IO;
 
 namespace CorePixelEngine
 {
-    public partial class Sprite
+    public class Sprite
     {
         public Int32 width = 0;
         public Int32 height = 0;
@@ -16,16 +16,16 @@ namespace CorePixelEngine
         { pColData = null; width = 0; height = 0; }
 
         public Sprite(string sImageFile, ResourcePack pack)
-        { LoadFromFile(sImageFile, pack); }
+        { PixelGameEngine.Instance.Platform.LoadFromFile(sImageFile, ref pColData, ref width, ref height, pack); }
 
-        partial void LoadFromFile(String sImageFile, ResourcePack pack);
+        public Sprite(Int32 w, Int32 h) : this(w, h, new Pixel()) {}
 
-        public Sprite(Int32 w, Int32 h)
+        public Sprite(Int32 w, Int32 h, Pixel defaultPixel)
         {
             width = w; height = h;
             pColData = new Pixel[width * height];
-            for (Int32 i = 0; i < width*height; i++)
-                pColData[i] = new Pixel();
+            for (Int32 i = 0; i < width * height; i++)
+                pColData[i] = defaultPixel;
         }
 
         public RCode LoadFromPGESprFile(string sImageFile, ResourcePack pack)

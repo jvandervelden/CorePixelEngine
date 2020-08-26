@@ -16,5 +16,6 @@ namespace CorePixelEngine
         public RCode StartSystemEventLoop();
         public RCode HandleSystemEvent();
         public void SetPixelGameEngine(PixelGameEngine pge);
+        public RCode LoadFromFile(string sImageFile, ref Pixel[] colData, ref int width, ref int height, ResourcePack pack = null);
     }
 }

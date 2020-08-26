@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
@@ -12,7 +13,6 @@ namespace CorePixelEngine.Windows
         private PixelGameEngine pge = null;
         private Dictionary<MouseButtons, int> mouseButtonMap = new Dictionary<MouseButtons, int>();
         private Dictionary<Keys, int> keyButtonMap = new Dictionary<Keys, int>();
-
 
         public RCode ApplicationCleanUp()
         {
@@ -50,7 +50,8 @@ namespace CorePixelEngine.Windows
             keyButtonMap[Keys.Scroll] = (int)Key.SCROLL; keyButtonMap[Keys.Tab] = (int)Key.TAB; keyButtonMap[Keys.Delete] = (int)Key.DEL; 
             keyButtonMap[Keys.Home] = (int)Key.HOME; keyButtonMap[Keys.End] = (int)Key.END; keyButtonMap[Keys.Prior] = (int)Key.PGUP; 
             keyButtonMap[Keys.Next] = (int)Key.PGDN; keyButtonMap[Keys.Insert] = (int)Key.INS; keyButtonMap[Keys.Shift] = (int)Key.SHIFT; 
-            keyButtonMap[Keys.Control] = (int)Key.CTRL; keyButtonMap[Keys.Space] = (int)Key.SPACE;
+            keyButtonMap[Keys.ShiftKey] = (int)Key.SHIFT; keyButtonMap[Keys.Control] = (int)Key.CTRL; keyButtonMap[Keys.ControlKey] = (int)Key.CTRL; 
+            keyButtonMap[Keys.Space] = (int)Key.SPACE;
 
             keyButtonMap[Keys.D0] = (int)Key.K0; keyButtonMap[Keys.D1] = (int)Key.K1; keyButtonMap[Keys.D2] = (int)Key.K2; keyButtonMap[Keys.D3] = (int)Key.K3; 
             keyButtonMap[Keys.D4] = (int)Key.K4; keyButtonMap[Keys.D5] = (int)Key.K5; keyButtonMap[Keys.D6] = (int)Key.K6; keyButtonMap[Keys.D7] = (int)Key.K7; 
@@ -61,6 +62,7 @@ namespace CorePixelEngine.Windows
             keyButtonMap[Keys.NumPad6] = (int)Key.NP6; keyButtonMap[Keys.NumPad7] = (int)Key.NP7; keyButtonMap[Keys.NumPad8] = (int)Key.NP8; 
             keyButtonMap[Keys.NumPad9] = (int)Key.NP9; keyButtonMap[Keys.Multiply] = (int)Key.NP_MUL; keyButtonMap[Keys.Add] = (int)Key.NP_ADD; 
             keyButtonMap[Keys.Divide] = (int)Key.NP_DIV; keyButtonMap[Keys.Subtract] = (int)Key.NP_SUB; keyButtonMap[Keys.Decimal] = (int)Key.NP_DECIMAL;
+            keyButtonMap[Keys.Menu] = (int)Key.TAB;
 
             return RCode.OK;
         }
@@ -133,5 +135,23 @@ namespace CorePixelEngine.Windows
         public RCode ThreadCleanUp() => RCode.OK;
 
         public RCode ThreadStartUp() => RCode.OK;
+
+        public RCode LoadFromFile(string sImageFile, ref Pixel[] colData, ref int width, ref int height, ResourcePack pack = null)
+        {
+            Bitmap img = (Bitmap)Bitmap.FromFile(sImageFile);
+
+            width = img.Width;
+            height = img.Height;
+            colData = new Pixel[width * height];
+
+            for (int x = 0; x < width; x++)
+                for (int y = 0; y < height; y++)
+                {
+                    Color pixelColor = img.GetPixel(x, y);
+                    colData[x + width * y] = new Pixel(pixelColor.R, pixelColor.G, pixelColor.B, pixelColor.A);
+                }
+
+            return RCode.FAIL;
+        }
     }
 }

@@ -129,7 +129,7 @@ namespace CorePixelEngine.Linux
                 {
                     case (int)Event.ClientMessage:
                         XClientMessageEvent xClientMessageEvent = Marshal.PtrToStructure<XClientMessageEvent>(ev);
-                        if (xClientMessageEvent.data == (IntPtr)deleteWindowMessage) 
+                        if (xClientMessageEvent.data == (IntPtr)deleteWindowMessage)
                             PixelGameEngine.Instance.Terminate();
                         break;
                     case (int)Event.KeyPress:
@@ -187,6 +187,11 @@ namespace CorePixelEngine.Linux
 
         public void SetPixelGameEngine(PixelGameEngine pge) { 
             this.pge = pge; 
+        }
+
+        public RCode LoadFromFile(string sImageFile, ref Pixel[] colData, ref int width, ref int height, ResourcePack pack = null)
+        {
+            throw new NotImplementedException();
         }
     }
 }

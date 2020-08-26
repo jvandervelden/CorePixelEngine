@@ -150,7 +150,6 @@ namespace CorePixelEngine
 
             Platform.StartSystemEventLoop();
 
-
             // Wait for thread to be exited
             t.Join();
 
@@ -668,18 +667,18 @@ namespace CorePixelEngine
             }
         }
 
-        public void DrawPartialSprite(VectorI2d pos, Sprite sprite, VectorI2d sourcepos, VectorI2d size, UInt32 scale, byte flip)
+        public void DrawPartialSprite(VectorI2d pos, Sprite sprite, VectorI2d sourcepos, VectorI2d size, UInt32 scale, Sprite.Flip flip)
         { DrawPartialSprite(pos.x, pos.y, sprite, sourcepos.x, sourcepos.y, size.x, size.y, scale, flip); }
 
-        public void DrawPartialSprite(Int32 x, Int32 y, Sprite sprite, Int32 ox, Int32 oy, Int32 w, Int32 h, UInt32 scale, byte flip)
+        public void DrawPartialSprite(Int32 x, Int32 y, Sprite sprite, Int32 ox, Int32 oy, Int32 w, Int32 h, UInt32 scale, Sprite.Flip flip)
         {
             if (sprite == null)
                 return;
 
             Int32 fxs = 0, fxm = 1, fx = 0;
             Int32 fys = 0, fym = 1, fy = 0;
-            if ((flip & (byte)Sprite.Flip.HORIZ) > 0) { fxs = w - 1; fxm = -1; }
-            if ((flip & (byte)Sprite.Flip.VERT) > 0) { fys = h - 1; fym = -1; }
+            if (((byte)flip & (byte)Sprite.Flip.HORIZ) > 0) { fxs = w - 1; fxm = -1; }
+            if (((byte)flip & (byte)Sprite.Flip.VERT) > 0) { fys = h - 1; fym = -1; }
 
             if (scale > 1)
             {
@@ -725,8 +724,8 @@ namespace CorePixelEngine
             di.pos[2] = new VectorF2d(vScreenSpaceDim.x, vScreenSpaceDim.y);
             di.pos[3] = new VectorF2d(vScreenSpaceDim.x, vScreenSpacePos.y);
 
-            VectorF2d uvtl = source_pos * decal.vUVScale;
-            VectorF2d uvbr = uvtl + (source_size * decal.vUVScale);
+            VectorF2d uvtl = new VectorF2d(source_pos.x * decal.vUVScale.x, source_pos.y * decal.vUVScale.y);
+            VectorF2d uvbr = new VectorF2d(uvtl.x + (source_size.x * decal.vUVScale.x), uvtl.y + (source_size.y * decal.vUVScale.y));
             di.uv[0] = new VectorF2d(uvtl.x, uvtl.y); di.uv[1] = new VectorF2d(uvtl.x, uvbr.y);
             di.uv[2] = new VectorF2d(uvbr.x, uvbr.y); di.uv[3] = new VectorF2d(uvbr.x, uvtl.y);
             vLayers[nTargetLayer].vecDecalInstance.Add(di);
@@ -763,12 +762,12 @@ namespace CorePixelEngine
             di.pos[1] = (new VectorF2d(0.0f, decal.sprite.height) - center) * scale;
             di.pos[2] = (new VectorF2d(decal.sprite.width, decal.sprite.height) - center) * scale;
             di.pos[3] = (new VectorF2d(decal.sprite.width, 0.0f) - center) * scale;
-            float c = (float)Math.Cos(fAngle), s = (float)Math.Sin(fAngle);
+            float c = (float)Math.Sin(fAngle), s = (float)Math.Cos(fAngle);
             for (int i = 0; i < 4; i++)
             {
                 di.pos[i] = pos + new VectorF2d(di.pos[i].x * c - di.pos[i].y * s, di.pos[i].x * s + di.pos[i].y * c);
-                di.pos[i] = di.pos[i] * vInvScreenSize * 2.0f - new VectorF2d(1.0f, 1.0f);
-                di.pos[i].y *= -1.0f;
+                di.pos[i].x = di.pos[i].x * vInvScreenSize.x * 2.0f - 1.0f;
+                di.pos[i].y = (di.pos[i].y * vInvScreenSize.y * 2.0f - 1.0f) * -1.0f;
             }
             vLayers[nTargetLayer].vecDecalInstance.Add(di);
         }
@@ -786,8 +785,8 @@ namespace CorePixelEngine
             for (int i = 0; i < 4; i++)
             {
                 di.pos[i] = pos + new VectorF2d(di.pos[i].x * c - di.pos[i].y * s, di.pos[i].x * s + di.pos[i].y * c);
-                di.pos[i] = di.pos[i] * vInvScreenSize * 2.0f - new VectorF2d(1.0f, 1.0f);
-                di.pos[i].y *= -1.0f;
+                di.pos[i].x = di.pos[i].x * vInvScreenSize.x * 2.0f - 1.0f;
+                di.pos[i].y = (di.pos[i].y * vInvScreenSize.y * 2.0f - 1.0f) * -1.0f;
             }
 
             VectorF2d uvtl = source_pos * decal.vUVScale;
@@ -803,7 +802,8 @@ namespace CorePixelEngine
             DecalInstance di = new DecalInstance();
             di.decal = decal;
             di.tint = tint;
-            VectorF2d center = new VectorF2d();
+            VectorF2d center = new VectorF2d(0.0f, 0.0f);
+
             float rd = ((pos[2].x - pos[0].x) * (pos[3].y - pos[1].y) - (pos[3].x - pos[1].x) * (pos[2].y - pos[0].y));
             if (rd != 0)
             {
@@ -834,7 +834,7 @@ namespace CorePixelEngine
             DecalInstance di = new DecalInstance();
             di.decal = decal;
             di.tint = tint;
-            VectorF2d center = new VectorF2d();
+            VectorF2d center = new VectorF2d(0.0f, 0.0f);
             float rd = ((pos[2].x - pos[0].x) * (pos[3].y - pos[1].y) - (pos[3].x - pos[1].x) * (pos[2].y - pos[0].y));
             if (rd != 0)
             {

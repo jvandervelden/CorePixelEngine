@@ -99,17 +99,20 @@ namespace CorePixelEngine
             // But leave in pixel space
 
             // Full Screen mode may have a weird viewport we must clamp to
-            int x = vMousePosCache.x - vViewPos.x;
-            int y = vMousePosCache.y - vViewPos.y;
-            vMousePosCache.x = (Int32)(((float)x / (float)(vWindowSize.x - (vViewPos.x * 2)) * (float)vScreenSize.x));
-            vMousePosCache.y = (Int32)(((float)y / (float)(vWindowSize.y - (vViewPos.y * 2)) * (float)vScreenSize.y));
-            if (vMousePosCache.x >= (Int32)vScreenSize.x) vMousePosCache.x = vScreenSize.x - 1;
-            if (vMousePosCache.y >= (Int32)vScreenSize.y) vMousePosCache.y = vScreenSize.y - 1;
-            if (vMousePosCache.x < 0) vMousePosCache.x = 0;
-            if (vMousePosCache.y < 0) vMousePosCache.y = 0;
+            if (vMousePos.x != vMousePosCache.x || vMousePos.y != vMousePosCache.y)
+            {
+                int x = vMousePosCache.x - vViewPos.x;
+                int y = vMousePosCache.y - vViewPos.y;
+                vMousePosCache.x = (Int32)(((float)x / (float)(vWindowSize.x - (vViewPos.x * 2)) * (float)vScreenSize.x));
+                vMousePosCache.y = (Int32)(((float)y / (float)(vWindowSize.y - (vViewPos.y * 2)) * (float)vScreenSize.y));
+                if (vMousePosCache.x >= (Int32)vScreenSize.x) vMousePosCache.x = vScreenSize.x - 1;
+                if (vMousePosCache.y >= (Int32)vScreenSize.y) vMousePosCache.y = vScreenSize.y - 1;
+                if (vMousePosCache.x < 0) vMousePosCache.x = 0;
+                if (vMousePosCache.y < 0) vMousePosCache.y = 0;
 
-            // Cache mouse coordinates so they remain consistent during frame
-            vMousePos.assign(vMousePosCache);
+                // Cache mouse coordinates so they remain consistent during frame
+                vMousePos.assign(vMousePosCache);
+            }
             nMouseWheelDelta = nMouseWheelDeltaCache;
             nMouseWheelDeltaCache = 0;
         }

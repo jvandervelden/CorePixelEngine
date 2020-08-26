@@ -51,6 +51,7 @@ namespace CorePixelEngine
         public static VectorI2d operator *(double lhs, VectorI2d rhs) => new VectorI2d(lhs * rhs.x, lhs * rhs.y);
         public static VectorI2d operator /(VectorI2d lhs, double rhs) => new VectorI2d(lhs.x / rhs, lhs.y / rhs);
         public static VectorI2d operator /(double lhs, VectorI2d rhs) => new VectorI2d(lhs / rhs.x, lhs / rhs.y);
+        public static VectorI2d operator /(VectorI2d lhs, VectorI2d rhs) => new VectorI2d(lhs.x / rhs.x, lhs.y / rhs.y);
     }
 
     public class VectorU2d : VectorD2d 
